@@ -6,7 +6,7 @@ All notable changes to this image are documented in this file.
 
 ### Added
 
-- Initial image version `11.8.8-milde1` using upstream `11.8.8`.
+- Initial image version `11.8.8-mld1` using upstream `11.8.8`.
 - Initial LinuxServer.io-style s6-overlay image for MariaDB.
 - Local `make` workflow for secure secret generation, linting, building, and smoke testing.
 - GitHub Actions for linting, Docker build, security scanning, Dependabot, and upstream monitoring.
@@ -18,4 +18,4 @@ All notable changes to this image are documented in this file.
 
 ## Versioning
 
-Image tags follow `<upstream-version>-milde<N>`. Packaging-only updates increment the `milde<N>` suffix.
+Image tags follow `<upstream-version>-mld<N>`. Packaging-only updates increment the `mld<N>` suffix.

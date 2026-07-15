@@ -26,17 +26,17 @@ make smoke
 This image follows the template versioning format:
 
 ```text
-<upstream-version>-milde<N>
+<upstream-version>-mld<N>
 ```
 
 Current image version:
 
 ```text
-11.8.8-milde1
+11.8.8-mld1
 ```
 
 - Upstream application/package version: `11.8.8`
-- Milde image revision: `milde1`
+- Image revision: `mld1`
 
 ## Runtime conventions
 
