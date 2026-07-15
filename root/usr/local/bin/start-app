@@ -51,21 +51,20 @@ if [[ ! -d "$MYSQL_DIR/mysql" ]]; then
 DELETE FROM mysql.user WHERE User='';
 CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE}\`;
 CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${escaped_app_pw}';
+CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'localhost' IDENTIFIED BY '${escaped_app_pw}';
 GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO '${MYSQL_USER}'@'%';
-ALTER USER 'root'@'localhost' IDENTIFIED BY '${escaped_root_pw}';
+GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO '${MYSQL_USER}'@'localhost';
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${escaped_root_pw}');
 FLUSH PRIVILEGES;
 SQL
 
-  if [[ -n "$root_pw" ]]; then
-    MYSQL_PWD="$root_pw" mariadb-admin --socket=/run/mysqld/mysqld.sock -uroot shutdown || kill "$pid"
-  else
-    mariadb-admin --socket=/run/mysqld/mysqld.sock -uroot shutdown || kill "$pid"
-  fi
+  mariadb-admin --socket=/run/mysqld/mysqld.sock -uroot shutdown || kill "$pid"
 fi
 
 cd "$MYSQL_DIR"
 exec s6-setuidgid abc mariadbd \
   --datadir="$MYSQL_DIR" \
+  --skip-networking=0 \
   --bind-address=0.0.0.0 \
   --port=3306 \
   --socket=/run/mysqld/mysqld.sock
