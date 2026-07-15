@@ -7,10 +7,8 @@ tmpdir="$(mktemp -d)"
 trap '${DOCKER:-docker} rm -f "$name" >/dev/null 2>&1 || true; rm -rf "$tmpdir"' EXIT
 
 mkdir -p "$tmpdir/config"
-printf 'app-change-me
-' > "$tmpdir/mysql_password"
-printf 'root-change-me
-' > "$tmpdir/mysql_root_password"
+printf 'app-change-me' > "$tmpdir/mysql_password"
+printf 'root-change-me' > "$tmpdir/mysql_root_password"
 
 ${DOCKER:-docker} run -d --name "$name"   -e PUID="$(id -u)"   -e PGID="$(id -g)"   -e MYSQL_DATABASE=smoke   -e MYSQL_USER=smoke   -e FILE__MYSQL_PASSWORD=/run/secrets/mysql_password   -e FILE__MYSQL_ROOT_PASSWORD=/run/secrets/mysql_root_password   -v "$tmpdir/config:/config"   -v "$tmpdir/mysql_password:/run/secrets/mysql_password:ro"   -v "$tmpdir/mysql_root_password:/run/secrets/mysql_root_password:ro"   "$image"
 

@@ -19,8 +19,13 @@ if [[ ! -d "$MYSQL_DIR/mysql" ]]; then
   echo "Initializing MariaDB data directory at $MYSQL_DIR"
   mariadb-install-db --user=abc --datadir="$MYSQL_DIR" --auth-root-authentication-method=normal
 
+  chown -R abc:abc "$MYSQL_DIR" /run/mysqld
+
   echo "Starting temporary MariaDB for initial setup"
-  s6-setuidgid abc mariadbd --datadir="$MYSQL_DIR" --socket=/run/mysqld/mysqld.sock --skip-networking &
+  (
+    cd "$MYSQL_DIR"
+    exec s6-setuidgid abc mariadbd --datadir="$MYSQL_DIR" --socket=/run/mysqld/mysqld.sock --skip-networking
+  ) &
   pid="$!"
 
   for _ in {1..60}; do
@@ -58,7 +63,9 @@ SQL
   fi
 fi
 
+cd "$MYSQL_DIR"
 exec s6-setuidgid abc mariadbd \
   --datadir="$MYSQL_DIR" \
   --bind-address=0.0.0.0 \
+  --port=3306 \
   --socket=/run/mysqld/mysqld.sock
