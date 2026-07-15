@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/mildman1848/mariadb
+    about: Check the project documentation before opening an issue.
+  - name: Security vulnerability
+    url: https://github.com/mildman1848/mariadb/security/advisories/new
+    about: Please report security vulnerabilities privately.
