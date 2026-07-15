@@ -6,8 +6,8 @@ FROM ghcr.io/linuxserver/baseimage-alpine:${LSIO_BASE_VERSION}
 ARG LSIO_BASE_VERSION
 ARG BUILD_DATE
 ARG APP_VERSION=11.8.8
-ARG IMAGE_REVISION=mld1
-ARG VERSION=11.8.8-mld1
+ARG IMAGE_REVISION=mldm2
+ARG VERSION=11.8.8-mldm2
 ARG VCS_REF
 
 LABEL build_version="Mildman1848 MariaDB version:- ${VERSION} Upstream:- ${APP_VERSION} Revision:- ${IMAGE_REVISION} Build-date:- ${BUILD_DATE}" \

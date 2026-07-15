@@ -32,17 +32,17 @@ This repository builds the `mariadb` container image. It uses a LinuxServer.io-s
 This image follows the template versioning format:
 
 ```text
-<upstream-version>-mld<N>
+<upstream-version>-mldm<N>
 ```
 
 Current image version:
 
 ```text
-11.8.8-mld1
+11.8.8-mldm2
 ```
 
 - Upstream application/package version: `11.8.8`
-- Image revision: `mld1`
+- Image revision: `mldm2`
 
 ## Local development helpers
 
@@ -71,6 +71,7 @@ Use `TRIVY='sudo trivy'` and `SYFT='sudo syft'` if your Docker images are only v
 - `CHANGELOG.md` — project changes.
 - `docs/secrets.md` — secret generation and handling.
 - `docs/licensing.md` — license notes.
+- `docs/branding.md` — public branding rules and startup banner.
 
 ## Registries
 
