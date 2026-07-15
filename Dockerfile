@@ -3,21 +3,30 @@
 ARG LSIO_BASE_VERSION=3.24
 FROM ghcr.io/linuxserver/baseimage-alpine:${LSIO_BASE_VERSION}
 
+ARG LSIO_BASE_VERSION
 ARG BUILD_DATE
-ARG VERSION=dev
+ARG APP_VERSION=11.8.8
+ARG IMAGE_REVISION=milde1
+ARG VERSION=11.8.8-milde1
 ARG VCS_REF
 
-LABEL build_version="Mildman1848 MariaDB LSIO-style version:- ${VERSION} Build-date:- ${BUILD_DATE}" \
+LABEL build_version="Mildman1848 MariaDB LSIO-style version:- ${VERSION} Upstream:- ${APP_VERSION} Revision:- ${IMAGE_REVISION} Build-date:- ${BUILD_DATE}" \
       maintainer="Mildman1848" \
       org.opencontainers.image.title="mariadb-lsio" \
       org.opencontainers.image.description="MariaDB packaged in a LinuxServer.io-style s6 container" \
       org.opencontainers.image.created="${BUILD_DATE}" \
       org.opencontainers.image.version="${VERSION}" \
       org.opencontainers.image.revision="${VCS_REF}" \
+      org.opencontainers.image.vendor="Mildman1848" \
+      org.opencontainers.image.base.name="ghcr.io/linuxserver/baseimage-alpine:${LSIO_BASE_VERSION}" \
+      org.opencontainers.image.source="https://github.com/mildman1848/mariadb-lsio" \
+      org.opencontainers.image.url="https://github.com/mildman1848/mariadb-lsio" \
       org.opencontainers.image.licenses="GPL-2.0-only"
 
 ENV APP_NAME="mariadb" \
-    APP_VERSION="${VERSION}" \
+    APP_VERSION="${APP_VERSION}" \
+    IMAGE_REVISION="${IMAGE_REVISION}" \
+    VERSION="${VERSION}" \
     MYSQL_DIR="/config/databases" \
     MYSQL_DATABASE="app" \
     MYSQL_USER="app"
