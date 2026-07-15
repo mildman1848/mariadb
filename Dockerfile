@@ -10,17 +10,17 @@ ARG IMAGE_REVISION=mld1
 ARG VERSION=11.8.8-mld1
 ARG VCS_REF
 
-LABEL build_version="Mildman1848 MariaDB LSIO-style version:- ${VERSION} Upstream:- ${APP_VERSION} Revision:- ${IMAGE_REVISION} Build-date:- ${BUILD_DATE}" \
+LABEL build_version="Mildman1848 MariaDB version:- ${VERSION} Upstream:- ${APP_VERSION} Revision:- ${IMAGE_REVISION} Build-date:- ${BUILD_DATE}" \
       maintainer="Mildman1848" \
-      org.opencontainers.image.title="mariadb-lsio" \
+      org.opencontainers.image.title="mariadb" \
       org.opencontainers.image.description="MariaDB packaged in a LinuxServer.io-style s6 container" \
       org.opencontainers.image.created="${BUILD_DATE}" \
       org.opencontainers.image.version="${VERSION}" \
       org.opencontainers.image.revision="${VCS_REF}" \
       org.opencontainers.image.vendor="Mildman1848" \
       org.opencontainers.image.base.name="ghcr.io/linuxserver/baseimage-alpine:${LSIO_BASE_VERSION}" \
-      org.opencontainers.image.source="https://github.com/mildman1848/mariadb-lsio" \
-      org.opencontainers.image.url="https://github.com/mildman1848/mariadb-lsio" \
+      org.opencontainers.image.source="https://github.com/mildman1848/mariadb" \
+      org.opencontainers.image.url="https://github.com/mildman1848/mariadb" \
       org.opencontainers.image.licenses="GPL-2.0-only"
 
 ENV APP_NAME="mariadb" \

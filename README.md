@@ -1,4 +1,4 @@
-# MariaDB LSIO Image
+# MariaDB
 
 LinuxServer.io-style s6-overlay container image for MariaDB.
 
@@ -20,6 +20,12 @@ make lint
 IMAGE_TAG=dev PLATFORMS=linux/amd64 make build
 make smoke
 ```
+
+## Description
+
+MariaDB packaged in a LinuxServer.io-style s6 container.
+
+This repository builds the `mariadb` container image. It uses a LinuxServer.io-style runtime, s6-overlay supervision, `/config` persistence, secure local secret generation, and CI-based multi-platform builds.
 
 ## Versioning
 
@@ -56,10 +62,10 @@ Current image version:
 
 Configured targets after validation:
 
-- GHCR: `ghcr.io/mildman1848/mariadb-lsio`
-- Docker Hub: `docker.io/<DOCKERHUB_USERNAME>/mariadb-lsio`
-- GitLab: `registry.gitlab.com/mildman1848/mariadb-lsio`
-- Codeberg-compatible registry: `codeberg.org/mildman1848/mariadb-lsio`
+- GHCR: `ghcr.io/mildman1848/mariadb`
+- Docker Hub: `docker.io/<DOCKERHUB_USERNAME>/mariadb`
+- GitLab: `registry.gitlab.com/mildman1848/mariadb`
+- Codeberg-compatible registry: `codeberg.org/mildman1848/mariadb`
 
 Publishing is manual through GitHub Actions `workflow_dispatch` with `push=true`.
 

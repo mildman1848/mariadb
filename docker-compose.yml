@@ -1,7 +1,7 @@
 services:
   mariadb:
-    image: ${IMAGE_NAME:-mariadb-lsio}:${IMAGE_TAG:-dev}
-    container_name: mariadb-lsio
+    image: ${IMAGE_NAME:-mariadb}:${IMAGE_TAG:-dev}
+    container_name: mariadb
     restart: unless-stopped
     environment:
       PUID: ${PUID:-1000}

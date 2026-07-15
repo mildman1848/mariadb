@@ -28,7 +28,7 @@ jobs:
             echo "# Upstream monitor"
             echo
             # shellcheck disable=SC2016
-            printf '%s\n' '- Image: `mariadb-lsio`'
+            printf '%s\n' '- Image: `mariadb`'
             printf '%s\n' "- Current LSIO base tag: \`${current_base:-unknown}\`"
             printf '%s\n' "- Alpine package signal: \`${package_version:-not found}\`"
             echo "- Upstream: https://mariadb.org/"
@@ -40,8 +40,8 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const title = 'Upstream monitor: mariadb-lsio';
-            const marker = '<!-- upstream-monitor:mariadb-lsio -->';
+            const title = 'Upstream monitor: mariadb';
+            const marker = '<!-- upstream-monitor:mariadb -->';
             const body = `${marker}\n${fs.readFileSync('.tmp/upstream-summary.md', 'utf8')}\n\nThis issue is managed by the upstream monitor workflow.`;
             const {owner, repo} = context.repo;
             const existing = await github.rest.issues.listForRepo({owner, repo, state: 'open', labels: 'upstream-monitor'});

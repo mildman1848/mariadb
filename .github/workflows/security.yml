@@ -45,7 +45,7 @@ jobs:
           context: .
           file: Dockerfile
           load: true
-          tags: mariadb-lsio:security-scan
+          tags: mariadb:security-scan
           build-args: |
             BUILD_DATE=${{ github.event.repository.updated_at }}
             VERSION=11.8.8-mld1
@@ -56,7 +56,7 @@ jobs:
       - name: Run Trivy image scan
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: mariadb-lsio:security-scan
+          image-ref: mariadb:security-scan
           format: table
           severity: HIGH,CRITICAL
           exit-code: '0'
