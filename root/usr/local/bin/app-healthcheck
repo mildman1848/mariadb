@@ -1,3 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
+
+. /usr/local/bin/file-env
+
+if [[ -n "${MYSQL_PASSWORD:-}" ]]; then
+  exec mariadb-admin \
+    --host=127.0.0.1 \
+    --port=3306 \
+    --user="${MYSQL_USER:-app}" \
+    --password="${MYSQL_PASSWORD}" \
+    ping \
+    --silent
+fi
+
 exec mariadb-admin --socket=/run/mysqld/mysqld.sock ping --silent

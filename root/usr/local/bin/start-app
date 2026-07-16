@@ -58,7 +58,11 @@ SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${escaped_root_pw}');
 FLUSH PRIVILEGES;
 SQL
 
-  mariadb-admin --socket=/run/mysqld/mysqld.sock -uroot shutdown || kill "$pid"
+  if [[ -n "$root_pw" ]]; then
+    MYSQL_PWD="$root_pw" mariadb-admin --socket=/run/mysqld/mysqld.sock -uroot shutdown || kill "$pid"
+  else
+    mariadb-admin --socket=/run/mysqld/mysqld.sock -uroot shutdown || kill "$pid"
+  fi
 fi
 
 cd "$MYSQL_DIR"
